@@ -13,8 +13,11 @@ namespace DragTree
 {
     public partial class Form1 : Form
     {
-        // TODO - create an int variable to track currentRow,
-        // TODO - create a Stopwatch object called stopwatch 
+
+        int currentRow = 1;
+
+        Stopwatch mywatch = new Stopwatch();
+
 
         // TODO - create a timer on the form called lightTimer (interval 400ms)
         // TODO - create the tick event for the lightTimer
@@ -27,12 +30,15 @@ namespace DragTree
 
         public Form1()
         {
+            
+
             InitializeComponent();
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
             // TODO - start the timer
+            startTimer.Enabled = true;
 
         }
 
@@ -56,5 +62,36 @@ namespace DragTree
 
         }
 
+        private void startTimer_Tick(object sender, EventArgs e)
+        {
+            if (currentRow == 1)
+            {
+                row1col1.BackColor = Color.Yellow;
+                row1col2.BackColor = Color.Yellow;
+                currentRow = 2;
+            }
+            else if (currentRow == 2)
+            {
+                row2col1.BackColor = Color.Yellow;
+                row2col2.BackColor = Color.Yellow;
+                currentRow = 3;
+            }
+            else if (currentRow == 3) 
+            {
+                row3col1.BackColor = Color.Yellow;
+                row3col2.BackColor = Color.Yellow;
+                currentRow = 4;
+            }
+            else if (currentRow == 4)
+            {
+                row4col1.BackColor = Color.Green;
+                row4col2.BackColor = Color.Green;
+                currentRow = 4;
+            }
+
+
+            
+
+        }
     }
 }
