@@ -30,7 +30,7 @@ namespace DragTree
 
         public Form1()
         {
-            
+
 
             InitializeComponent();
         }
@@ -40,6 +40,7 @@ namespace DragTree
             // TODO - start the timer
             startTimer.Enabled = true;
 
+
         }
 
         private void goButton_Click(object sender, EventArgs e)
@@ -48,8 +49,22 @@ namespace DragTree
 
             // TODO - check if the ellapsed time in milliseconds is > 0. 
             // If yes show the time.
-            // If no show "FOUL START" 
+            // If no show "FOUL START"                       
+            mywatch.Stop();
 
+
+           timeLabel.Text = mywatch.Elapsed.ToString(@"m\:ss\:fff");
+            if(mywatch.ElapsedMilliseconds > 0 )
+            {
+                mywatch.Start();
+            }
+            else
+            {
+                timeLabel.Text = "Foul Start";
+            }
+
+
+    
         }
 
         private void resetButton_Click(object sender, EventArgs e)
@@ -59,7 +74,10 @@ namespace DragTree
             // TODO - put rows 1-3 colours back to DimGray and row 4 back to DarkOliveGreen
 
             // TODO - reset row value and timeLabel text
+            mywatch.Reset();
 
+          
+            
         }
 
         private void startTimer_Tick(object sender, EventArgs e)
@@ -67,8 +85,9 @@ namespace DragTree
             if (currentRow == 1)
             {
                 row1col1.BackColor = Color.Yellow;
-                row1col2.BackColor = Color.Yellow;
-                currentRow = 2;
+                row1col2.BackColor = Color.Yellow;              
+                currentRow = 2; 
+                                           
             }
             else if (currentRow == 2)
             {
@@ -76,7 +95,7 @@ namespace DragTree
                 row2col2.BackColor = Color.Yellow;
                 currentRow = 3;
             }
-            else if (currentRow == 3) 
+            else if (currentRow == 3)
             {
                 row3col1.BackColor = Color.Yellow;
                 row3col2.BackColor = Color.Yellow;
@@ -86,11 +105,10 @@ namespace DragTree
             {
                 row4col1.BackColor = Color.Green;
                 row4col2.BackColor = Color.Green;
-                currentRow = 4;
+                
+                mywatch.Start();                                        
             }
 
-
-            
 
         }
     }
