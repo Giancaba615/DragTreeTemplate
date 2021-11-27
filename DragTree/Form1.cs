@@ -46,14 +46,16 @@ namespace DragTree
         private void goButton_Click(object sender, EventArgs e)
         {
             // TODO - stop the stopwatch
+            mywatch.Stop();
+
 
             // TODO - check if the ellapsed time in milliseconds is > 0. 
             // If yes show the time.
             // If no show "FOUL START"                       
-            mywatch.Stop();
 
 
-           timeLabel.Text = mywatch.Elapsed.ToString(@"m\:ss\:fff");
+
+            timeLabel.Text = mywatch.Elapsed.ToString(@"m\:ss\:fff");
             if(mywatch.ElapsedMilliseconds > 0 )
             {
                 mywatch.Start();
@@ -74,10 +76,29 @@ namespace DragTree
             // TODO - put rows 1-3 colours back to DimGray and row 4 back to DarkOliveGreen
 
             // TODO - reset row value and timeLabel text
-            mywatch.Reset();
-
-          
+            //mywatch.Stop();
             
+            //currentRow = 1;
+            //startTimer.Enabled = false;
+            row1col1.BackColor = Color.DimGray;
+            row1col2.BackColor = Color.DimGray;
+            //currentRow = 2;
+
+            row2col1.BackColor = Color.DimGray;
+            row2col2.BackColor = Color.DimGray;
+            //currentRow = 3;
+           
+            row3col1.BackColor = Color.DimGray;
+            row3col2.BackColor = Color.DimGray;
+            //currentRow = 4;
+           
+            row4col1.BackColor = Color.DarkOliveGreen;
+            row4col2.BackColor = Color.DarkOliveGreen;
+         
+            mywatch.Reset();
+            currentRow = 1;
+              timeLabel.Text = mywatch.Elapsed.ToString(@"m\:ss\:fff");
+
         }
 
         private void startTimer_Tick(object sender, EventArgs e)
@@ -103,10 +124,11 @@ namespace DragTree
             }
             else if (currentRow == 4)
             {
-                row4col1.BackColor = Color.Green;
-                row4col2.BackColor = Color.Green;
-                
-                mywatch.Start();                                        
+                row4col1.BackColor = Color.LimeGreen;
+                row4col2.BackColor = Color.LimeGreen;
+                startTimer.Stop();
+                mywatch.Start();
+
             }
 
 
